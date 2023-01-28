@@ -2,11 +2,13 @@ import os
 import openai
 import streamlit as st
 
+# Autenticación de OpenAI (oculta la clave en una variable de entorno)
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 
 def grade_essay(essay):
     completions = openai.Completion.create(
-        engine="text-davinci-002",
+        engine="text-davinci-003",
         prompt=(f"Please grade the following essay on a scale of 1-10: {essay}"),
         max_tokens=1024,
         n=1,
